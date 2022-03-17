@@ -1,0 +1,28 @@
+version: '3'
+services:
+  cron:
+    build: ./build
+    network_mode: "host"  
+    environment:
+      INWX_USER: "user"
+      INWX_PASS: "pass"
+      RECORDS: >
+        [
+          {
+            "domain": "domain.tld",
+            "record": "domain.tld"
+          },
+          {
+            "domain": "domain2.tld",
+            "record": "subdomain.domain2.tld"
+          }
+        ]
+    labels:
+      diun.enable: true
+      diun.notify_on: new;update
+      com.centurylinklabs.watchtower.enable: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 1m
+        max-file: "3"

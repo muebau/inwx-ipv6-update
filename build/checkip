@@ -1,0 +1,2 @@
+#!/bin/sh
+python3 /ipupdate.py `dig -t aaaa +short myip.opendns.com @resolver1.opendns.com`
