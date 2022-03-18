@@ -1,7 +1,7 @@
 version: '3'
 services:
   cron:
-    build: ./build
+    build: https://github.com/muebau/inwx-ipv6-update.git#:build
     network_mode: "host"  
     environment:
       INWX_USER: "user"
@@ -17,12 +17,3 @@ services:
             "record": "subdomain.domain2.tld"
           }
         ]
-    labels:
-      diun.enable: true
-      diun.notify_on: new;update
-      com.centurylinklabs.watchtower.enable: true
-    logging:
-      driver: "json-file"
-      options:
-        max-size: 1m
-        max-file: "3"
